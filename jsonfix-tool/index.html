@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JsonFix - 一键修复脏JSON</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 自定义滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; 
+        }
+        .code-editor {
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+        }
+        /* 简单的加载动画 */
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #3b82f6;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin 1s linear infinite; /* Safari */
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="w-full border-b border-gray-800 bg-gray-900/90 backdrop-blur fixed top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center text-white font-bold text-lg">J</div>
+                    <span class="font-bold text-xl tracking-tight">JsonFix</span>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#demo" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">在线演示</a>
+                    <a href="#features" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">功能特性</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!-- Gumroad 购买按钮 -->
+<div style="text-align:center;margin:2rem 0;">
+  <a href="https://gum.co/mock_1781227370" target="_blank" rel="noopener"
+     class="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
+     style="display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;font-size:1.125rem;font-weight:700;color:white;background:linear-gradient(to right,#10b981,#14b8a6);border-radius:0.75rem;box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);text-decoration:none;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.5rem;height:1.5rem;">
+      <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    </svg>
+    获取 JsonFix
+  </a>
+  <p style="margin-top:0.5rem;font-size:0.875rem;color:#64748b;">免费 / 随心付 · 无需注册</p>
+</div>
+
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center px-3 py-1 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-500 text-sm font-medium mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-brand-500 mr-2 animate-pulse"></span>
+            专为开发者打造的 JSON 修复工具
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6">
+            一键修复脏JSON，<br class="hidden sm:block">让数据清洗<span class="text-brand-500">零门槛</span>
+        </h1>
+        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 mb-10">
+            专注于自动修复缺失引号、尾逗号等常见语法错误的极简在线工具。
+            专为开发者从 LLM 或老旧 API 获取残缺数据场景优化。
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#demo" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-brand-600 hover:bg-brand-500 md:py-4 md:text-lg md:px-10 transition-all shadow-lg shadow-brand-500/20">
+                立即修复 JSON
+            </a>
+            <a href="https://github.com/topics/json-repair" target="_blank" class="inline-flex items-center justify-center px-8 py-3 border border-gray-700 text-base font-medium rounded-lg text-gray-300 bg-gray-800 hover:bg-gray-700 md:py-4 md:text-lg md:px-10 transition-all">
+                查看开源参考
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-brand-500/50 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">智能语法修复</h3>
+                    <p class="text-gray-400">自动补全缺失的引号、括号，移除尾随逗号。基于启发式算法，比标准解析器更懂“脏数据”。</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-brand-500/50 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">批量文本处理</h3>
+                    <p class="text-gray-400">支持提取并修复文本块中的多个 JSON 对象。一键提取、修复、格式化，无需手动分割数据。</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-brand-500/50 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">浏览器端瞬间运行</h3>
+                    <p class="text-gray-400">无需安装本地依赖，无需上传数据到服务器。纯前端实现，数据隐私安全，响应速度极快。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section id="demo" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-white">在线演示</h2>
+            <p class="mt-4 text-gray-400">粘贴你从 LLM 或 API 获取的残缺 JSON，点击修复即可。</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[600px]">
+            <!-- Input Area -->
+            <div class="flex flex-col h-full bg-gray-800 rounded-xl border border-gray-700 overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-4 py-3 bg-gray-900 border-b border-gray-700">
+                    <span class="text-sm font-medium text-gray-400">输入 (脏数据)</span>
+                    <div class="flex gap-2">
+                        <button onclick="clearInput()" class="text-xs text-gray-500 hover:text-white transition-colors">清空</button>
+                        <button onclick="loadSample()" class="text-xs text-brand-500 hover:text-brand-400 transition-colors">加载示例</button>
+                    </div>
+                </div>
+                <textarea id="inputJson" class="flex-1 w-full bg-gray-900 text-gray-300 p-4 code-editor text-sm resize-none focus:outline-none focus:ring-1 focus:ring-brand-500/50" placeholder="在此粘贴残缺的 JSON 字符串..."></textarea>
+                <div class="p-4 bg-gray-900 border-t border-gray-700">
+                    <button onclick="fixJson()" id="fixBtn" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-4 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20">
+                        <span>一键修复并格式化</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Output Area -->
+            <div class="flex flex-col h-full bg-gray-800 rounded-xl border border-gray-700 overflow-hidden shadow-xl relative">
+                <div class="flex items-center justify-between px-4 py-3 bg-gray-900 border-b border-gray-700">
+                    <span class="text-sm font-medium text-gray-400">输出 (修复后)</span>
+                    <button onclick="copyResult()" id="copyBtn" class="text-xs bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded transition-colors flex items-center gap-1">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        复制
+                    </button>
+                </div>
+                <div id="outputContainer" class="flex-1 w-full bg-gray-900 p-4 code-editor text-sm overflow-auto">
+                    <pre id="outputJson" class="text-green-400 whitespace-pre-wrap break-all"></pre>
+                    <div id="placeholder" class="h-full flex items-center justify-center text-gray-600">
+                        等待处理...
+                    </div>
+                </div>
+                <!-- Error Toast -->
+                <div id="errorToast" class="hidden absolute bottom-4 left-4 right-4 bg-red-500/90 text-white p-3 rounded-lg text-sm shadow-lg backdrop-blur-sm">
+                    <span id="errorMessage">无法修复: 格式错误</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acknowledgements -->
+    <section class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-lg font-semibold text-gray-300 mb-6 text-center">参考开源库鸣谢</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+                <a href="https://github.com/rhysd/fixjson" target="_blank" class="flex items-center p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-brand-500/30 transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gray-500 mr-3"></div>
+                    <div>
+                        <div class="font-medium text-gray-200">rhysd/fixjson</div>
+                        <div class="text-gray-500 text-xs">JSON Fixer for Humans</div>
+                    </div>
+                </a>
+                <a href="https://github.com/HAibiiin/json-repair" target="_blank" class="flex items-center p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-brand-500/30 transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gray-500 mr-3"></div>
+                    <div>
+                        <div class="font-medium text-gray-200">HAibiiin/json-repair</div>
+                        <div class="text-gray-500 text-xs">Repair JSON! (LLM focus)</div>
+                    </div>
+                </a>
+                <a href="https://github.com/awrped/ferrite-json" target="_blank" class="flex items-center p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-brand-500/30 transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gray-500 mr-3"></div>
+                    <div>
+                        <div class="font-medium text-gray-200">awrped/ferrite-json</div>
+                        <div class="text-gray-500 text-xs">The JSON Validator</div>
+                    </div>
+                </a>
+                <a href="https://github.com/HenrikJoreteg/fixpack" target="_blank" class="flex items-center p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-brand-500/30 transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-gray-500
+<!-- Auto SaaS Agent tracking -->
+<script>(function(){
+  var HOST = "http://localhost:8766";
+  var SLUG = "jsonfix-tool";
+  function ping(kind, extra){
+    try {
+      var body = Object.assign({ slug: SLUG, kind: kind }, extra || {});
+      if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+        var blob = new Blob([JSON.stringify(body)], { type: 'application/json' });
+        navigator.sendBeacon(HOST + '/api/ping', blob);
+      } else {
+        fetch(HOST + '/api/ping', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+          mode: 'no-cors',
+          keepalive: true,
+        }).catch(function(){});
+      }
+    } catch (e) {}
+  }
+  ping('pageview', { ref: document.referrer || '' });
+  function attachClick(selector){
+    try {
+      document.querySelectorAll(selector).forEach(function(el){
+        el.addEventListener('click', function(){ ping('click_buy'); });
+      });
+    } catch(e) {}
+  }
+  // 页面加载完成后再绑定购买按钮
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      attachClick('a[href*="gumroad"], a[href*="buy"], a.buy, button.buy, a[class*="buy"], button[class*="buy"]');
+    });
+  } else {
+    attachClick('a[href*="gumroad"], a[href*="buy"], a.buy, button.buy, a[class*="buy"], button[class*="buy"]');
+  }
+})();
+</script>
