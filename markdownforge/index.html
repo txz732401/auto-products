@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MarkdownForge · 一个关于 markdown 的轻量工具</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+<div class="max-w-6xl mx-auto px-6 py-12">
+
+  <header class="text-center py-16">
+    <div class="inline-block text-xs tracking-widest text-emerald-400 font-mono mb-4">AUTO-SAAS-AGENT BUILD</div>
+    <h1 class="text-5xl font-bold">MarkdownForge</h1>
+    <p class="text-xl text-slate-300 mt-4">一个关于 markdown 的轻量工具</p>
+    <p class="max-w-2xl mx-auto text-slate-400 mt-6">针对 markdown 的在线工具站，参考 GitHub 上的优秀开源项目重新设计的纯静态版本。开箱即用，无需安装。</p>
+    <button onclick="document.getElementById('playground').scrollIntoView({behavior:'smooth'})"
+      class="mt-8 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold px-8 py-3 rounded-lg">
+      立即试用 →
+    </button>
+  </header>
+
+  <section class="py-12">
+    <h2 class="text-2xl font-bold mb-6">🎯 为谁而做</h2>
+    <ul class="space-y-2"><li class="text-slate-300">· 独立开发者</li>
+<li class="text-slate-300">· 日常需要快速处理这类任务的人</li>
+<li class="text-slate-300">· 想学习这类项目实现方式的人</li></ul>
+  </section>
+
+  <section class="py-12">
+    <h2 class="text-2xl font-bold mb-6">⚡ 核心功能</h2>
+    <div class="grid md:grid-cols-3 gap-4"><div class="bg-slate-800/60 border border-slate-700 rounded-lg p-5">
+  <div class="text-emerald-400 text-sm font-mono mb-2">FEATURE 1</div>
+  <div class="font-semibold text-slate-100">在线 markdown 处理 (浏览器内运行, 不上传数据)</div>
+</div>
+<div class="bg-slate-800/60 border border-slate-700 rounded-lg p-5">
+  <div class="text-emerald-400 text-sm font-mono mb-2">FEATURE 2</div>
+  <div class="font-semibold text-slate-100">实时预览 + 一键复制结果</div>
+</div>
+<div class="bg-slate-800/60 border border-slate-700 rounded-lg p-5">
+  <div class="text-emerald-400 text-sm font-mono mb-2">FEATURE 3</div>
+  <div class="font-semibold text-slate-100">整合精选开源项目的最佳实践</div>
+</div></div>
+  </section>
+
+  <section id="playground" class="py-12">
+    <h2 class="text-2xl font-bold mb-6">🛠 Playground · 在线试用</h2>
+    <div class="bg-slate-800/60 border border-slate-700 rounded-lg p-6">
+      <label class="block text-sm text-slate-400 mb-2">输入文本 (支持 JSON / CSV / 普通文本):</label>
+      <textarea id="input" rows="8"
+        class="w-full bg-slate-900 border border-slate-700 rounded p-3 font-mono text-sm text-slate-100 outline-none focus:border-emerald-500"
+        placeholder='{"hello": "world"}'></textarea>
+      <div class="flex gap-2 mt-4 flex-wrap">
+        <button onclick="doAction('pretty')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold px-4 py-2 rounded">格式化</button>
+        <button onclick="doAction('minify')" class="bg-sky-500 hover:bg-sky-400 text-slate-900 font-semibold px-4 py-2 rounded">压缩</button>
+        <button onclick="doAction('count')" class="bg-violet-500 hover:bg-violet-400 text-white font-semibold px-4 py-2 rounded">统计字符</button>
+        <button onclick="doAction('upper')" class="bg-slate-700 hover:bg-slate-600 text-white font-semibold px-4 py-2 rounded">大写</button>
+        <button onclick="doAction('lower')" class="bg-slate-700 hover:bg-slate-600 text-white font-semibold px-4 py-2 rounded">小写</button>
+        <button onclick="doAction('reverse')" class="bg-slate-700 hover:bg-slate-600 text-white font-semibold px-4 py-2 rounded">反转</button>
+        <button onclick="copyResult()" class="ml-auto bg-slate-600 hover:bg-slate-500 text-white font-semibold px-4 py-2 rounded">复制结果</button>
+      </div>
+      <label class="block text-sm text-slate-400 mt-6 mb-2">输出:</label>
+      <textarea id="output" rows="8" readonly
+        class="w-full bg-slate-900 border border-slate-700 rounded p-3 font-mono text-sm text-emerald-300"></textarea>
+      <div id="status" class="text-xs text-slate-500 mt-2">就绪。</div>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <h2 class="text-2xl font-bold mb-6">💡 参考的开源项目</h2>
+    <div class="grid md:grid-cols-2 gap-4"><a href="https://github.com/microsoft/markitdown" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">microsoft/markitdown</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 150450</div>
+  <div class="text-sm text-slate-400 mt-2">Python tool for converting files and office documents to Markdown.</div>
+</a>
+<a href="https://github.com/firecrawl/firecrawl" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">firecrawl/firecrawl</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 131216</div>
+  <div class="text-sm text-slate-400 mt-2">The API to search, scrape, and interact with the web at scale. 🔥</div>
+</a>
+<a href="https://github.com/mermaid-js/mermaid" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">mermaid-js/mermaid</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 88577</div>
+  <div class="text-sm text-slate-400 mt-2">Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown</div>
+</a>
+<a href="https://github.com/toeverything/AFFiNE" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">toeverything/AFFiNE</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 69255</div>
+  <div class="text-sm text-slate-400 mt-2">There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, s</div>
+</a>
+<a href="https://github.com/opendatalab/MinerU" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">opendatalab/MinerU</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 67192</div>
+  <div class="text-sm text-slate-400 mt-2">Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic workflows.</div>
+</a>
+<a href="https://github.com/docling-project/docling" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">docling-project/docling</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 61351</div>
+  <div class="text-sm text-slate-400 mt-2">Get your documents ready for gen AI</div>
+</a></div>
+  </section>
+
+  <section class="py-12">
+    <h2 class="text-2xl font-bold mb-2">📖 价值主张</h2>
+    <p class="text-slate-300">不用装环境，打开网页就能用；参考成熟开源项目的处理逻辑；无登录也能用。</p>
+    <p class="text-slate-400 mt-4 text-sm">💰 未来可考虑：Pro 版批量处理 / 企业部署 / 定制功能收费</p>
+  </section>
+
+  <footer class="text-center text-xs text-slate-500 py-8 border-t border-slate-800 mt-12">
+    © MarkdownForge · 由 Auto SaaS Agent 自动生成
+  </footer>
+</div>
+<script>
+function $(id){return document.getElementById(id);}
+function doAction(kind){
+  const raw = $("input").value;
+  let out = "";
+  try {
+    if (kind === "pretty") {
+      if (raw.trim().startsWith("{") || raw.trim().startsWith("[")) {
+        out = JSON.stringify(JSON.parse(raw), null, 2);
+      } else { out = raw; }
+    } else if (kind === "minify") {
+      if (raw.trim().startsWith("{") || raw.trim().startsWith("[")) {
+        out = JSON.stringify(JSON.parse(raw));
+      } else { out = raw.replace(/\s+/g," ").trim(); }
+    } else if (kind === "count") {
+      out = "字符: " + raw.length + " | 行数: " + raw.split("\n").length + " | 单词: " + (raw.trim().split(/\s+/).filter(Boolean).length);
+    } else if (kind === "upper") { out = raw.toUpperCase(); }
+    else if (kind === "lower") { out = raw.toLowerCase(); }
+    else if (kind === "reverse") { out = raw.split("").reverse().join(""); }
+    $("status").textContent = "已处理 · 动作: " + kind;
+  } catch (e) {
+    out = "[错误] " + e.message;
+    $("status").textContent = "处理失败";
+  }
+  $("output").value = out;
+}
+function copyResult(){
+  const t = $("output").value;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(()=>{ $("status").textContent="已复制到剪贴板 ✓"; });
+}
+</script>
+</body></html>

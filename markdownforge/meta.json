@@ -1,0 +1,75 @@
+{
+  "name": "MarkdownForge",
+  "slug": "markdownforge",
+  "tagline": "一个关于 markdown 的轻量工具",
+  "description": "针对 markdown 的在线工具站，参考 GitHub 上的优秀开源项目重新设计的纯静态版本。开箱即用，无需安装。",
+  "target_users": [
+    "独立开发者",
+    "日常需要快速处理这类任务的人",
+    "想学习这类项目实现方式的人"
+  ],
+  "core_features": [
+    "在线 markdown 处理 (浏览器内运行, 不上传数据)",
+    "实时预览 + 一键复制结果",
+    "整合精选开源项目的最佳实践"
+  ],
+  "value_proposition": "不用装环境，打开网页就能用；参考成熟开源项目的处理逻辑；无登录也能用。",
+  "monetization_hint": "未来可考虑：Pro 版批量处理 / 企业部署 / 定制功能收费",
+  "tech_stack": "纯静态",
+  "competitor_keywords": [
+    "markdown",
+    "online tool",
+    "developer tool"
+  ],
+  "generated_at": 1781153386,
+  "github_repos": [
+    {
+      "full_name": "microsoft/markitdown",
+      "stars": 150450,
+      "url": "https://github.com/microsoft/markitdown",
+      "description": "Python tool for converting files and office documents to Markdown."
+    },
+    {
+      "full_name": "firecrawl/firecrawl",
+      "stars": 131216,
+      "url": "https://github.com/firecrawl/firecrawl",
+      "description": "The API to search, scrape, and interact with the web at scale. 🔥"
+    },
+    {
+      "full_name": "mermaid-js/mermaid",
+      "stars": 88577,
+      "url": "https://github.com/mermaid-js/mermaid",
+      "description": "Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown"
+    },
+    {
+      "full_name": "toeverything/AFFiNE",
+      "stars": 69255,
+      "url": "https://github.com/toeverything/AFFiNE",
+      "description": "There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. "
+    },
+    {
+      "full_name": "opendatalab/MinerU",
+      "stars": 67192,
+      "url": "https://github.com/opendatalab/MinerU",
+      "description": "Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic workflows."
+    },
+    {
+      "full_name": "docling-project/docling",
+      "stars": 61351,
+      "url": "https://github.com/docling-project/docling",
+      "description": "Get your documents ready for gen AI"
+    },
+    {
+      "full_name": "usememos/memos",
+      "stars": 60605,
+      "url": "https://github.com/usememos/memos",
+      "description": "Open-source, self-hosted note-taking tool built for quick capture. Markdown-native, lightweight, and fully yours."
+    },
+    {
+      "full_name": "adam-p/markdown-here",
+      "stars": 60205,
+      "url": "https://github.com/adam-p/markdown-here",
+      "description": "Google Chrome, Firefox, and Thunderbird extension that lets you write email in Markdown and render it before sending."
+    }
+  ]
+}
