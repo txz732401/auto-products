@@ -1,0 +1,20 @@
+{
+  "name": "Smoke Ping Tool",
+  "slug": "smoke-ping-tool",
+  "tagline": "Checks that JS injection works",
+  "description": "minimal test",
+  "target_users": [
+    "developers"
+  ],
+  "core_features": [
+    "does nothing, just a placeholder"
+  ],
+  "value_proposition": "test only",
+  "monetization_hint": "free",
+  "tech_stack": "html, tailwind",
+  "competitor_keywords": [
+    "test"
+  ],
+  "generated_at": 1781156687,
+  "github_repos": []
+}
