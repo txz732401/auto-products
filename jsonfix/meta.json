@@ -1,0 +1,63 @@
+{
+  "name": "JsonFix",
+  "slug": "jsonfix",
+  "tagline": "一键修复脏数据，批量处理无压力",
+  "description": "专为开发者设计的极简 JSON 工具，支持自动修复常见格式错误（如尾随逗号、单引号等），并提供直观的树状可视化与批量转换功能。无需注册，纯前端运行，保障数据隐私。",
+  "target_users": [
+    "后端开发人员",
+    "数据分析师"
+  ],
+  "core_features": [
+    "智能错误自动修复",
+    "批量文件处理",
+    "JSON 树状可视化"
+  ],
+  "value_proposition": "比传统格式化器更容错，比重型 IDE 更轻量，解决 API 调试中常见的格式报错痛点。",
+  "monetization_hint": "免费版含基础修复，高级版（$5/月）提供自定义修复规则、API 批量接口及企业级数据加密。",
+  "tech_stack": "纯静态/前端优先",
+  "competitor_keywords": [
+    "json formatter",
+    "json beautifier",
+    "online json validator"
+  ],
+  "generated_at": 1781175376,
+  "github_repos": [
+    {
+      "full_name": "AykutSarac/jsoncrack.com",
+      "stars": 44108,
+      "url": "https://github.com/AykutSarac/jsoncrack.com",
+      "description": "✨ Innovative and open-source visualization application that transforms various data formats, such as JSON, YAML, XML and CSV into interactive graphs."
+    },
+    {
+      "full_name": "biomejs/biome",
+      "stars": 24962,
+      "url": "https://github.com/biomejs/biome",
+      "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP."
+    },
+    {
+      "full_name": "dr5hn/countries-states-cities-database",
+      "stars": 9621,
+      "url": "https://github.com/dr5hn/countries-states-cities-database",
+      "description": "🌍 Discover our global repository of countries, states, and cities!  🏙️ Get comprehensive data in JSON, SQL, PSQL, SQLSERVER, MONGODB, SQLITE, XML, YAML, and CSV formats. Access ISO2, ISO3 codes, country code, capital, native language, timezones (for countries), and more. #countries #states #cities"
+    },
+    {
+      "full_name": "orval-labs/orval",
+      "stars": 6111,
+      "url": "https://github.com/orval-labs/orval",
+      "description": "orval is able to generate client with appropriate type-signatures (TypeScript) from any valid OpenAPI v3 or Swagger v2 specification, either in yaml or json formats. 🍺"
+    },
+    {
+      "full_name": "cube2222/octosql",
+      "stars": 5256,
+      "url": "https://github.com/cube2222/octosql",
+      "description": "OctoSQL is a query tool that allows you to join, analyse and transform data from multiple databases and file formats using SQL."
+    }
+  ],
+  "gumroad": {
+    "success": true,
+    "product_id": "mock_1781175344",
+    "buy_url": "https://gum.co/mock_1781175344",
+    "preview_url": "https://gumroad.com/l/mock_1781175344",
+    "mock": true
+  }
+}
