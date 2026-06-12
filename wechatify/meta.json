@@ -1,0 +1,46 @@
+{
+  "name": "WeChatify",
+  "slug": "wechatify",
+  "tagline": "Markdown 直达微信，排版零烦恼",
+  "description": "专为技术开发者设计的在线 Markdown 转微信公众号排版工具。支持实时预览、LaTeX 公式渲染及本地图片自动上传，一键生成适配微信富文本编辑器的格式。",
+  "target_users": [
+    "技术博客作者",
+    "开发者"
+  ],
+  "core_features": [
+    "实时 Markdown 预览与微信样式同步",
+    "LaTeX 数学公式转 SVG 渲染",
+    "本地图片自动上传至图床",
+    "一键复制适配微信编辑器的富文本"
+  ],
+  "value_proposition": "无需安装插件或配置本地环境，浏览器即可使用，解决开发者写作后手动调整 CSS 排版的痛点，比传统编辑器更轻量，比插件更通用。",
+  "monetization_hint": "免费基础功能；高级订阅提供无限图片存储、自定义品牌模板、多平台（掘金/知乎）一键发布。",
+  "tech_stack": "纯静态/前端优先",
+  "competitor_keywords": [
+    "Markdown 转微信",
+    "公众号排版工具",
+    "技术博客发布器"
+  ],
+  "generated_at": 1781172437,
+  "github_repos": [
+    {
+      "full_name": "barretlee/online-markdown",
+      "stars": 919,
+      "url": "https://github.com/barretlee/online-markdown",
+      "description": "A online markdown converter specially for Wechat Public formatting."
+    },
+    {
+      "full_name": "DavidLam-oss/obsidian-wechat-converter",
+      "stars": 207,
+      "url": "https://github.com/DavidLam-oss/obsidian-wechat-converter",
+      "description": "Obsidian 公众号排版 + 多平台发布插件。Markdown 转公众号样式、一键同步草稿箱、支持知乎/掘金/小红书等 20+ 平台草稿投递、LaTeX 数学公式 (SVG)、本地图片自动上传。让技术写作回归纯粹。"
+    }
+  ],
+  "gumroad": {
+    "success": true,
+    "product_id": "mock_1781172403",
+    "buy_url": "https://gum.co/mock_1781172403",
+    "preview_url": "https://gumroad.com/l/mock_1781172403",
+    "mock": true
+  }
+}

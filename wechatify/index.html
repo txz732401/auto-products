@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeChatify - Markdown 直达微信</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wechat: '#07C160',
+                        dark: '#1a1a1a',
+                        darker: '#121212'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 模拟微信编辑器样式 */
+        .wechat-preview {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            font-size: 15px;
+        }
+        .wechat-preview h1, .wechat-preview h2, .wechat-preview h3 {
+            font-weight: bold;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+            color: #000;
+        }
+        .wechat-preview code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #c7254e;
+        }
+        .wechat-preview pre {
+            background-color: #f6f6f6;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .wechat-preview blockquote {
+            border-left: 3px solid #ccc;
+            padding-left: 10px;
+            color: #666;
+            margin: 1em 0;
+        }
+        .wechat-preview img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ccc; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #aaa; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-wechat rounded-lg flex items-center justify-center text-white font-bold text-xl">W</div>
+                    <span class="font-bold text-xl tracking-tight text-gray-900">WeChatify</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-500">
+                    <a href="#features" class="hover:text-wechat transition">功能</a>
+                    <a href="#demo" class="hover:text-wechat transition">在线试用</a>
+                    <a href="#about" class="hover:text-wechat transition">关于</a>
+                </div>
+                <button class="bg-gray-900 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-800 transition">
+                    登录
+                </button>
+            </div>
+        </div>
+    </nav>
+<!-- Gumroad 购买按钮 -->
+<div style="text-align:center;margin:2rem 0;">
+  <a href="https://gum.co/mock_1781172403" target="_blank" rel="noopener"
+     class="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
+     style="display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;font-size:1.125rem;font-weight:700;color:white;background:linear-gradient(to right,#10b981,#14b8a6);border-radius:0.75rem;box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);text-decoration:none;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.5rem;height:1.5rem;">
+      <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    </svg>
+    获取 WeChatify
+  </a>
+  <p style="margin-top:0.5rem;font-size:0.875rem;color:#64748b;">免费 / 随心付 · 无需注册</p>
+</div>
+
+
+    <!-- Hero Section -->
+    <section class="relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-20 px-4 sm:px-6 lg:px-8">
+                <main class="mt-10 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                            <span class="block xl:inline">Markdown 直达微信</span>
+                            <span class="block text-wechat">排版零烦恼</span>
+                        </h1>
+                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            专为开发者打造的公众号排版神器。实时预览、LaTeX 公式渲染、图片自动上传。告别繁琐的 CSS 调试，一键复制即可发布。
+                        </p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="#demo" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-wechat hover:bg-green-600 md:py-4 md:text-lg transition transform hover:-translate-y-1">
+                                    立即开始创作
+                                </a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="#features" class="w-full flex items-center justify-center px-8 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 md:py-4 md:text-lg transition">
+                                    了解更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-gray-100 flex items-center justify-center">
+            <!-- Abstract visual representation of code/markdown -->
+            <div class="p-10 w-full h-full relative opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-100 to-blue-50 opacity-50"></div>
+                <div class="relative z-10 bg-white p-6 rounded-xl shadow-2xl max-w-md mx-auto transform rotate-2">
+                    <div class="flex space-x-2 mb-4">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="h-2 bg-gray-200 rounded w-3/4"></div>
+                        <div class="h-2 bg-gray-200 rounded w-full"></div>
+                        <div class="h-2 bg-gray-200 rounded w-5/6"></div>
+                        <div class="mt-4 p-2 bg-gray-50 rounded border border-gray-100 font-mono text-xs text-gray-600">
+                            > <span class="text-green-600">npm install</span> wechat-format<br>
+                            > <span class="text-blue-600">git push</span> origin main
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base text-wechat font-semibold tracking-wide uppercase">核心优势</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    为什么选择 WeChatify?
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Feature 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-wechat mb-4">
+                            <i class="fas fa-eye text-xl"></i>
+                        </div>
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">实时同步预览</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            左侧编写 Markdown，右侧即时渲染。所见即所得，完美复刻微信公众号后台排版效果。
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-600 mb-4">
+                            <i class="fas fa-square-root-alt text-xl"></i>
+                        </div>
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">LaTeX 公式渲染</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            内置 MathJax 引擎，将复杂的数学公式转换为高清 SVG，在移动端清晰可见。
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-100 text-purple-600 mb-4">
+                            <i class="fas fa-cloud-upload-alt text-xl"></i>
+                        </div>
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">本地图片上传</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            拖拽图片即可自动上传至图床，无需担心公众号 2MB 限制和链接失效问题。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section id="demo" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8 text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900">在线编辑器演示</h2>
+                <p class="mt-4 text-lg text-gray-500">体验实时转换，点击下方按钮即可复制适配微信的富文本。</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-4 h-[600px] lg:h-[700px]">
+                <!-- Input Area -->
+                <div class="lg:w-1/2 flex flex-col h-full bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                    <div class="bg-gray-50 px-4 py-2 border-b border-gray-200 flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-600">Markdown 源文件</span>
+                        <button onclick="clearEditor()" class="text-xs text-gray-400 hover:text-red-500">清空</button>
+                    </div>
+                    <textarea id="markdown-input" class="flex-1 w-full p-4 font-mono text-sm resize-none focus:outline-none bg-gray-50" placeholder="# 在这里输入 Markdown...&#10;&#10;例如：&#10;```javascript&#10;console.log('Hello WeChat');&#10;```&#10;&#10;$$ E = mc^2 $$"></textarea>
+                </div>
+
+                <!-- Output Area -->
+                <div class="lg:w-1/2 flex flex-col h-full bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                    <div class="bg-gray-50 px-4 py-2 border-b border-gray-200 flex justify-between items-center">
+                        <span class="text-sm font-medium text-gray-600">微信预览 (Rich Text)</span>
+                        <button onclick="copyToClipboard()" class="bg-wechat text-white px-3 py-1 rounded text-xs font-medium hover:bg-green-600 transition flex items-center gap-1">
+                            <i class="fas fa-copy"></i> 一键复制
+                        </button>
+                    </div>
+                    <div id="preview-output" class="flex-1 w-full p-4 overflow-y-auto bg-white wechat-preview border-l-4 border-gray-100">
+                        <div class="text-center text-gray-400 mt-20">
+                            <i class="fas fa-edit text-4xl mb-4"></i>
+                            <p>开始输入以预览效果</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+                已复制到剪贴板！
+            </div>
+        </div>
+    </section>
+
+    <!-- References / Credits -->
+    <section id="about" class="py-12 bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="border-b border-gray-700 pb-8 mb-8">
+                <h3 class="text-xl font-bold text-white mb-4">参考开源项目 & 鸣谢</h3>
+                <p class="text-sm leading-relaxed max-w-3xl">
+                    本工具的设计灵感与部分核心逻辑参考了以下优秀的开源项目，感谢这些开发者为中文互联网内容生态做出的贡献：
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                    <h4 class="font-bold text-white mb-2"><i class="fab fa-github mr-2"></i>barretlee/online-markdown</h4>
+                    <p class="text-sm text-gray-400 mb-3">A online markdown converter specially for Wechat Public formatting.</p>
+                    <a href="https://github.com/barretlee/online-markdown" target="_blank" class="text-wechat text-sm hover:underline">查看源码 &rarr;</a>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                    <h4 class="font-bold text-white mb-2"><i class="fab fa-github mr-2"></i>DavidLam-oss/obsidian-wechat-converter</h4>
+                    <p class="text-sm text-gray-400 mb-3">Obsidian 公众号排版 + 多平台发布插件。支持 LaTeX SVG 渲染及本地图片自动上传。</p>
+                    <a href="https://github.com/DavidLam-oss/obsidian-wechat-converter" target="_blank" class="text-wechat text-sm hover:underline">查看源码 &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb
+<!-- Auto SaaS Agent tracking -->
+<script>(function(){
+  var HOST = "http://localhost:8766";
+  var SLUG = "wechatify";
+  function ping(kind, extra){
+    try {
+      var body = Object.assign({ slug: SLUG, kind: kind }, extra || {});
+      if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+        var blob = new Blob([JSON.stringify(body)], { type: 'application/json' });
+        navigator.sendBeacon(HOST + '/api/ping', blob);
+      } else {
+        fetch(HOST + '/api/ping', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+          mode: 'no-cors',
+          keepalive: true,
+        }).catch(function(){});
+      }
+    } catch (e) {}
+  }
+  ping('pageview', { ref: document.referrer || '' });
+  function attachClick(selector){
+    try {
+      document.querySelectorAll(selector).forEach(function(el){
+        el.addEventListener('click', function(){ ping('click_buy'); });
+      });
+    } catch(e) {}
+  }
+  // 页面加载完成后再绑定购买按钮
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      attachClick('a[href*="gumroad"], a[href*="buy"], a.buy, button.buy, a[class*="buy"], button[class*="buy"]');
+    });
+  } else {
+    attachClick('a[href*="gumroad"], a[href*="buy"], a.buy, button.buy, a[class*="buy"], button[class*="buy"]');
+  }
+})();
+</script>
