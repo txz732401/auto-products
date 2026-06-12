@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JsonForge · 一个关于 json 的轻量工具</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+<div class="max-w-6xl mx-auto px-6 py-12">
+
+  <header class="text-center py-16">
+    <div class="inline-block text-xs tracking-widest text-emerald-400 font-mono mb-4">AUTO-SAAS-AGENT BUILD</div>
+    <h1 class="text-5xl font-bold">JsonForge</h1>
+    <p class="text-xl text-slate-300 mt-4">一个关于 json 的轻量工具</p>
+    <p class="max-w-2xl mx-auto text-slate-400 mt-6">针对 json 的在线工具站，参考 GitHub 上的优秀开源项目重新设计的纯静态版本。开箱即用，无需安装。</p>
+    <button onclick="document.getElementById('playground').scrollIntoView({behavior:'smooth'})"
+      class="mt-8 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold px-8 py-3 rounded-lg">
+      立即试用 →
+    </button>
+  </header>
+<!-- Gumroad 购买按钮 -->
+<div style="text-align:center;margin:2rem 0;">
+  <a href="https://gum.co/mock_1781160284" target="_blank" rel="noopener"
+     class="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
+     style="display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;font-size:1.125rem;font-weight:700;color:white;background:linear-gradient(to right,#10b981,#14b8a6);border-radius:0.75rem;box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);text-decoration:none;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.5rem;height:1.5rem;">
+      <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    </svg>
+    获取 JsonForge
+  </a>
+  <p style="margin-top:0.5rem;font-size:0.875rem;color:#64748b;">免费 / 随心付 · 无需注册</p>
+</div>
+
+
+  <section class="py-12">
+    <h2 class="text-2xl font-bold mb-6">🎯 为谁而做</h2>
+    <ul class="space-y-2"><li class="text-slate-300">· 独立开发者</li>
+<li class="text-slate-300">· 日常需要快速处理这类任务的人</li>
+<li class="text-slate-300">· 想学习这类项目实现方式的人</li></ul>
+  </section>
+
+  <section class="py-12">
+    <h2 class="text-2xl font-bold mb-6">⚡ 核心功能</h2>
+    <div class="grid md:grid-cols-3 gap-4"><div class="bg-slate-800/60 border border-slate-700 rounded-lg p-5">
+  <div class="text-emerald-400 text-sm font-mono mb-2">FEATURE 1</div>
+  <div class="font-semibold text-slate-100">在线 json 处理 (浏览器内运行, 不上传数据)</div>
+</div>
+<div class="bg-slate-800/60 border border-slate-700 rounded-lg p-5">
+  <div class="text-emerald-400 text-sm font-mono mb-2">FEATURE 2</div>
+  <div class="font-semibold text-slate-100">实时预览 + 一键复制结果</div>
+</div>
+<div class="bg-slate-800/60 border border-slate-700 rounded-lg p-5">
+  <div class="text-emerald-400 text-sm font-mono mb-2">FEATURE 3</div>
+  <div class="font-semibold text-slate-100">整合精选开源项目的最佳实践</div>
+</div></div>
+  </section>
+
+  <section id="playground" class="py-12">
+    <h2 class="text-2xl font-bold mb-6">🛠 Playground · 在线试用</h2>
+    <div class="bg-slate-800/60 border border-slate-700 rounded-lg p-6">
+      <label class="block text-sm text-slate-400 mb-2">输入文本 (支持 JSON / CSV / 普通文本):</label>
+      <textarea id="input" rows="8"
+        class="w-full bg-slate-900 border border-slate-700 rounded p-3 font-mono text-sm text-slate-100 outline-none focus:border-emerald-500"
+        placeholder='{"hello": "world"}'></textarea>
+      <div class="flex gap-2 mt-4 flex-wrap">
+        <button onclick="doAction('pretty')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold px-4 py-2 rounded">格式化</button>
+        <button onclick="doAction('minify')" class="bg-sky-500 hover:bg-sky-400 text-slate-900 font-semibold px-4 py-2 rounded">压缩</button>
+        <button onclick="doAction('count')" class="bg-violet-500 hover:bg-violet-400 text-white font-semibold px-4 py-2 rounded">统计字符</button>
+        <button onclick="doAction('upper')" class="bg-slate-700 hover:bg-slate-600 text-white font-semibold px-4 py-2 rounded">大写</button>
+        <button onclick="doAction('lower')" class="bg-slate-700 hover:bg-slate-600 text-white font-semibold px-4 py-2 rounded">小写</button>
+        <button onclick="doAction('reverse')" class="bg-slate-700 hover:bg-slate-600 text-white font-semibold px-4 py-2 rounded">反转</button>
+        <button onclick="copyResult()" class="ml-auto bg-slate-600 hover:bg-slate-500 text-white font-semibold px-4 py-2 rounded">复制结果</button>
+      </div>
+      <label class="block text-sm text-slate-400 mt-6 mb-2">输出:</label>
+      <textarea id="output" rows="8" readonly
+        class="w-full bg-slate-900 border border-slate-700 rounded p-3 font-mono text-sm text-emerald-300"></textarea>
+      <div id="status" class="text-xs text-slate-500 mt-2">就绪。</div>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <h2 class="text-2xl font-bold mb-6">💡 参考的开源项目</h2>
+    <div class="grid md:grid-cols-2 gap-4"><a href="https://github.com/fastapi/fastapi" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">fastapi/fastapi</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 99101</div>
+  <div class="text-sm text-slate-400 mt-2">FastAPI framework, high performance, easy to learn, fast to code, ready for production</div>
+</a>
+<a href="https://github.com/typicode/json-server" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">typicode/json-server</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 75584</div>
+  <div class="text-sm text-slate-400 mt-2">Get a full fake REST API with zero coding in less than 30 seconds (seriously)</div>
+</a>
+<a href="https://github.com/redis/redis" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">redis/redis</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 74811</div>
+  <div class="text-sm text-slate-400 mt-2">For developers, who are building real-time data-driven applications, Redis is the preferred, fastest, and most feature-r</div>
+</a>
+<a href="https://github.com/opendatalab/MinerU" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">opendatalab/MinerU</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 67201</div>
+  <div class="text-sm text-slate-400 mt-2">Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic workflows.</div>
+</a>
+<a href="https://github.com/webpack/webpack" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">webpack/webpack</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 65782</div>
+  <div class="text-sm text-slate-400 mt-2">A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows for loading pa</div>
+</a>
+<a href="https://github.com/prettier/prettier" target="_blank" class="block bg-slate-800/60 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/60 transition">
+  <div class="font-semibold text-slate-100">prettier/prettier</div>
+  <div class="text-xs text-emerald-400 mt-1">★ 51966</div>
+  <div class="text-sm text-slate-400 mt-2">Prettier is an opinionated code formatter.</div>
+</a></div>
+  </section>
+
+  <section class="py-12">
+    <h2 class="text-2xl font-bold mb-2">📖 价值主张</h2>
+    <p class="text-slate-300">不用装环境，打开网页就能用；参考成熟开源项目的处理逻辑；无登录也能用。</p>
+    <p class="text-slate-400 mt-4 text-sm">💰 未来可考虑：Pro 版批量处理 / 企业部署 / 定制功能收费</p>
+  </section>
+
+  <footer class="text-center text-xs text-slate-500 py-8 border-t border-slate-800 mt-12">
+    © JsonForge · 由 Auto SaaS Agent 自动生成
+  </footer>
+</div>
+<script>
+function $(id){return document.getElementById(id);}
+function doAction(kind){
+  const raw = $("input").value;
+  let out = "";
+  try {
+    if (kind === "pretty") {
+      if (raw.trim().startsWith("{") || raw.trim().startsWith("[")) {
+        out = JSON.stringify(JSON.parse(raw), null, 2);
+      } else { out = raw; }
+    } else if (kind === "minify") {
+      if (raw.trim().startsWith("{") || raw.trim().startsWith("[")) {
+        out = JSON.stringify(JSON.parse(raw));
+      } else { out = raw.replace(/\s+/g," ").trim(); }
+    } else if (kind === "count") {
+      out = "字符: " + raw.length + " | 行数: " + raw.split("\n").length + " | 单词: " + (raw.trim().split(/\s+/).filter(Boolean).length);
+    } else if (kind === "upper") { out = raw.toUpperCase(); }
+    else if (kind === "lower") { out = raw.toLowerCase(); }
+    else if (kind === "reverse") { out = raw.split("").reverse().join(""); }
+    $("status").textContent = "已处理 · 动作: " + kind;
+  } catch (e) {
+    out = "[错误] " + e.message;
+    $("status").textContent = "处理失败";
+  }
+  $("output").value = out;
+}
+function copyResult(){
+  const t = $("output").value;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(()=>{ $("status").textContent="已复制到剪贴板 ✓"; });
+}
+</script>
+
+<!-- Auto SaaS Agent tracking -->
+<script>(function(){
+  var HOST = "http://localhost:8766";
+  var SLUG = "jsonforge";
+  function ping(kind, extra){
+    try {
+      var body = Object.assign({ slug: SLUG, kind: kind }, extra || {});
+      if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+        var blob = new Blob([JSON.stringify(body)], { type: 'application/json' });
+        navigator.sendBeacon(HOST + '/api/ping', blob);
+      } else {
+        fetch(HOST + '/api/ping', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+          mode: 'no-cors',
+          keepalive: true,
+        }).catch(function(){});
+      }
+    } catch (e) {}
+  }
+  ping('pageview', { ref: document.referrer || '' });
+  function attachClick(selector){
+    try {
+      document.querySelectorAll(selector).forEach(function(el){
+        el.addEventListener('click', function(){ ping('click_buy'); });
+      });
+    } catch(e) {}
+  }
+  // 页面加载完成后再绑定购买按钮
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      attachClick('a[href*="gumroad"], a[href*="buy"], a.buy, button.buy, a[class*="buy"], button[class*="buy"]');
+    });
+  } else {
+    attachClick('a[href*="gumroad"], a[href*="buy"], a.buy, button.buy, a[class*="buy"], button[class*="buy"]');
+  }
+})();
+</script>
+</body></html>

@@ -1,0 +1,82 @@
+{
+  "name": "JsonForge",
+  "slug": "jsonforge",
+  "tagline": "一个关于 json 的轻量工具",
+  "description": "针对 json 的在线工具站，参考 GitHub 上的优秀开源项目重新设计的纯静态版本。开箱即用，无需安装。",
+  "target_users": [
+    "独立开发者",
+    "日常需要快速处理这类任务的人",
+    "想学习这类项目实现方式的人"
+  ],
+  "core_features": [
+    "在线 json 处理 (浏览器内运行, 不上传数据)",
+    "实时预览 + 一键复制结果",
+    "整合精选开源项目的最佳实践"
+  ],
+  "value_proposition": "不用装环境，打开网页就能用；参考成熟开源项目的处理逻辑；无登录也能用。",
+  "monetization_hint": "未来可考虑：Pro 版批量处理 / 企业部署 / 定制功能收费",
+  "tech_stack": "纯静态",
+  "competitor_keywords": [
+    "json",
+    "online tool",
+    "developer tool"
+  ],
+  "generated_at": 1781160284,
+  "github_repos": [
+    {
+      "full_name": "fastapi/fastapi",
+      "stars": 99101,
+      "url": "https://github.com/fastapi/fastapi",
+      "description": "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
+    },
+    {
+      "full_name": "typicode/json-server",
+      "stars": 75584,
+      "url": "https://github.com/typicode/json-server",
+      "description": "Get a full fake REST API with zero coding in less than 30 seconds (seriously)"
+    },
+    {
+      "full_name": "redis/redis",
+      "stars": 74811,
+      "url": "https://github.com/redis/redis",
+      "description": "For developers, who are building real-time data-driven applications, Redis is the preferred, fastest, and most feature-rich cache, data structure server, and document and vector query engine."
+    },
+    {
+      "full_name": "opendatalab/MinerU",
+      "stars": 67201,
+      "url": "https://github.com/opendatalab/MinerU",
+      "description": "Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic workflows."
+    },
+    {
+      "full_name": "webpack/webpack",
+      "stars": 65782,
+      "url": "https://github.com/webpack/webpack",
+      "description": "A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows for loading parts of the application on demand. Through \"loaders\", modules can be CommonJs, AMD, ES6 modules, CSS, Images, JSON, Coffeescript, LESS, ... and your custom stuff."
+    },
+    {
+      "full_name": "prettier/prettier",
+      "stars": 51966,
+      "url": "https://github.com/prettier/prettier",
+      "description": "Prettier is an opinionated code formatter."
+    },
+    {
+      "full_name": "chinese-poetry/chinese-poetry",
+      "stars": 51766,
+      "url": "https://github.com/chinese-poetry/chinese-poetry",
+      "description": "The most comprehensive database of Chinese poetry 🧶最全中华古诗词数据库,  唐宋两朝近一万四千古诗人,  接近5.5万首唐诗加26万宋诗.  两宋时期1564位词人，21050首词。"
+    },
+    {
+      "full_name": "nlohmann/json",
+      "stars": 49910,
+      "url": "https://github.com/nlohmann/json",
+      "description": "JSON for Modern C++"
+    }
+  ],
+  "gumroad": {
+    "success": true,
+    "product_id": "mock_1781160284",
+    "buy_url": "https://gum.co/mock_1781160284",
+    "preview_url": "https://gumroad.com/l/mock_1781160284",
+    "mock": true
+  }
+}
